@@ -2,25 +2,38 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-export default class Listar extends Component {
+const ArrayMsg = props => (
+    <tr>
+        <td>{props.listenMessage.fullmessage}</td>
+        <td>
+            <Link to={"/edit/"+props.listenMessage._id}>Edit</Link>
+        </td>
+    </tr>
+)
+
+export default class TodosList extends Component {
 
     constructor() {
         super();
-        this.state = {
-            mensagens: []
-        }
+        this.state = {listenMessage: []}
+        this.componentDidMount()
     }
 
-    componentDidCatch(){
+    componentDidMount() {
         axios.get('http://localhost:3001/message/desde/0')
-        .then(response => {
-            this.setState({ mensagens: response.fullmessage});
-        })
-        .catch(function(err){
-            console.log(err);
-        })
+            .then(response => {
+                this.setState({ listenMessage: response.data });
+            })
+            .catch(function (error){
+                console.log(error);
+            })
     }
 
+    msgList() {
+        return this.state.listenMessage.map(function(currentTodo, i){
+            return <ArrayMsg listenMessage={currentTodo} key={i} />;
+        })
+    }
 
     render() {
         return (
@@ -29,14 +42,12 @@ export default class Listar extends Component {
                 <table className="table table-striped" style={{ marginTop: 20 }} >
                     <thead>
                         <tr>
-                            <th>Description</th>
-                            <th>Responsible</th>
-                            <th>Priority</th>
-                            <th>Action</th>
+                            <th>Msg</th>
+                            <th>Opcoes</th>
                         </tr>
                     </thead>
                     <tbody>
-                        { this.todoList() }
+                        { this.msgList() }
                     </tbody>
                 </table>
             </div>
