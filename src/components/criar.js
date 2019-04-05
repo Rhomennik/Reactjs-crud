@@ -4,10 +4,10 @@ import axios from 'axios';
 export default class CreateTodo extends Component {
     constructor(props){
         super(props);
+        this.onChangeFullmessage = this.onChangeFullmessage.bind(this);
         this.state = {
             fullmessage: ''
         }
-        this.onChangeFullmessage = this.onChangeFullmessage.bind(this);
     }
 
 // Metodo submit do formulario

@@ -11,7 +11,7 @@ class App extends Component {
       <div className="container">
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <a className="navbar-brand"  target="_blank">
-            <img src='https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg' width="30" height="30" alt="CodingTheSmartWay.com" />
+            <img src='https://avatars2.githubusercontent.com/u/24496303?s=460&v=4' width="30" height="30" alt="CodingTheSmartWay.com" />
           </a>
           <Link to="/" className="navbar-brand">App Crud</Link>
           <div className="collpase navbar-collapse">
@@ -20,7 +20,7 @@ class App extends Component {
                 <Link to="/" className="nav-link">Listar</Link>
               </li>
               <li className="navbar-item">
-                <Link to="/create" className="nav-link">Novo</Link>
+                <Link to="/create" className="nav-link">Nova mensagens</Link>
               </li>
             </ul>
           </div>
