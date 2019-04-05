@@ -4,9 +4,13 @@ import axios from 'axios';
 export default class CreateTodo extends Component {
     constructor(props){
         super(props);
+
+        this.onChangePrioridade = this.onChangePrioridade = this.onChangePrioridade.bind(this);
         this.onChangeFullmessage = this.onChangeFullmessage.bind(this);
+
         this.state = {
-            fullmessage: ''
+            fullmessage: '',
+            messageprioridade: ''
         }
     }
 
@@ -14,10 +18,11 @@ export default class CreateTodo extends Component {
 onSubmit = (e) => {
     e.preventDefault();
 
-    console.log(`form fullmessage: ${this.state.fullmessage}`);
+    console.log(`form fullmessage: ${this.state.messageprioridade}`);
 
     const novaMensagem = {
-        fullmessage: this.state.fullmessage
+        fullmessage: this.state.fullmessage,
+        messageprioridade: this.state.messageprioridade
     };
 
     axios.post('http://localhost:3001/message/', novaMensagem)
@@ -35,6 +40,12 @@ onChangeFullmessage(e) {
         fullmessage: e.target.value
     })
 }
+onChangePrioridade = (e) => {
+    this.setState({
+        messageprioridade: e.target.value
+    })
+    console.log('aa', this.state.messageprioridade, e.target.value)
+}
 
     render() {
         return (
@@ -50,6 +61,18 @@ onChangeFullmessage(e) {
                             onChange={this.onChangeFullmessage}
                             />
                 </div>
+                <div className="form-check form-check-inline">
+                            <input  className="form-check-input" 
+                                    type="radio" 
+                                    name="prioridadeOptions" 
+                                    id="prioridadeImportante" 
+                                    value="Importante" 
+                                    checked={this.state.messageprioridade === 'Importante'} 
+                                    onChange={this.onChangePrioridade}
+                                    />
+                                    <label className="form-check-label">Importante</label>
+                                    </div>
+                
                 <div className="form-group">
                     <input type="submit" value="Enviar" className="btn btn-primary" />
                 </div>

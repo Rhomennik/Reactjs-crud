@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Criar from "./criar";
 import Editar from "./editar";
 import Listar from "./listar";
+import Apuestas from "./apuestas"
 
 class Navbar extends Component {
     constructor(props) {
@@ -16,7 +17,7 @@ class Navbar extends Component {
     }
     render() { 
         return ( <div className="container">
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav  className="navbar navbar-expand-lg navbar-light bg-light" >
           <a className="navbar-brand"  target="_blank">
             <img src='https://avatars2.githubusercontent.com/u/24496303?s=460&v=4' width="30" height="30" alt="CodingTheSmartWay.com" />
           </a>
@@ -29,6 +30,9 @@ class Navbar extends Component {
               <li className="navbar-item">
                 <Link to="/create" className="nav-link">Nova mensagens</Link>
               </li>
+              <li className="navbar-item">
+                <Link to="/apuestas" className="nav-link">Apuestas</Link>
+              </li>
             </ul>
           </div>
         </nav>
@@ -36,6 +40,7 @@ class Navbar extends Component {
         <Route path="/" exact component={Listar} />
         <Route path="/edit/:id" component={Editar} />
         <Route path="/create" component={Criar} />
+        <Route path="/apuestas" component={Apuestas} />
       </div> );
     }
 }

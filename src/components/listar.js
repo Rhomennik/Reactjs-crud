@@ -1,34 +1,25 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import ArrayMsg from './item'
 import axios from 'axios';
-
-const ArrayMsg = props => (
-    <tr>
-        <td>{props.listenMessage.fullmessage}</td>
-        <td>
-            <Link to={"/edit/"+props.listenMessage._id}>Edit</Link>
-        </td>
-    </tr>
-)
 
 export default class TodosList extends Component {
 
-    constructor() {
-        super();
-        this.state = {listenMessage: []}
-        this.componentDidMount()
-    }
+
+        state = {listenMessage: []};
+        componentDidMount();
+
+    willtran
 
     componentDidMount() {
         axios.get('http://localhost:3001/message/desde/0')
-            .then(response => {
+        .then(response => {
                 this.setState({ listenMessage: response.data });
             })
             .catch(function (error){
                 console.log(error);
             })
     }
-
     msgList() {
         return this.state.listenMessage.map(function(currentTodo, i){
             return <ArrayMsg listenMessage={currentTodo} key={i} />;

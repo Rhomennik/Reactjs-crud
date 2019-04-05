@@ -6,7 +6,8 @@ export default class Editar extends Component {
     constructor(){
         super();
         this.state = {
-            fullmessage: ''
+            fullmessage: '',
+            messageprioridade: ''
         }
     }
 
@@ -29,11 +30,17 @@ onChangeFullmessage = (e) =>{
             fullmessage: e.target.value
         })
 }
-
+onChangePrioridade = (e) => {
+    this.setState({
+        messageprioridade: e.target.value
+    })
+    console.log('aa', this.state.messageprioridade, e.target.value)
+}
 onSubmit = (e) => {
     e.preventDefault();
     const msgObj = {
-        fullmessage: this.state.fullmessage
+        fullmessage: this.state.fullmessage,
+        messageprioridade: this.state.messageprioridade
     };
     console.log('msgObj, OkTrue', msgObj);
 
@@ -57,6 +64,17 @@ onSubmit = (e) => {
                             onChange={this.onChangeFullmessage}
                             />
                 </div>
+                <div className="form-check form-check-inline">
+                            <input  className="form-check-input" 
+                                    type="radio" 
+                                    name="prioridadeOptions" 
+                                    id="prioridadeImportante" 
+                                    value="Importante" 
+                                    checked={this.state.messageprioridade === 'Importante'} 
+                                    onChange={this.onChangePrioridade}
+                                    />
+                                    <label className="form-check-label">Importante</label>
+                                    </div>
                 <div className="form-group">
                     <input type="submit" value="Editar" className="btn btn-primary" />
                 </div>
