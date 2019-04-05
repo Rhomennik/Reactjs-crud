@@ -25,6 +25,7 @@ onSubmit = (e) => {
     this.setState({
         fullmessage: ''
     })
+    this.props.history.push('/');
 
 }
 
