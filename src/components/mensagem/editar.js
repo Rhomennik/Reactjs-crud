@@ -42,7 +42,7 @@ onSubmit = (e) => {
     axios.put('http://localhost:3001/message/'+this.props.match.params.id, msgObj)
         .then(resp => console.log('okTrue', resp.data));
     // if oktrue : Ser redirecionado usando props.hitory
-        this.props.history.push('/list');
+        this.props.history.push('/');
 }
 
     render() {
