@@ -5,13 +5,9 @@ import axios from 'axios';
 
 export default class TodosList extends Component {
 
+    state = {listenMessage: []};
 
-        state = {listenMessage: []};
-        componentDidMount();
-
-    willtran
-
-    componentDidMount() {
+    componentDidMount = () => {
         axios.get('http://localhost:3001/message/desde/0')
         .then(response => {
                 this.setState({ listenMessage: response.data });
@@ -20,7 +16,7 @@ export default class TodosList extends Component {
                 console.log(error);
             })
     }
-    msgList() {
+    msgList = () => {
         return this.state.listenMessage.map(function(currentTodo, i){
             return <ArrayMsg listenMessage={currentTodo} key={i} />;
         })

@@ -4,10 +4,8 @@ import axios from 'axios';
 export default class CreateTodo extends Component {
     constructor(props){
         super(props);
-
         this.onChangePrioridade = this.onChangePrioridade = this.onChangePrioridade.bind(this);
         this.onChangeFullmessage = this.onChangeFullmessage.bind(this);
-
         this.state = {
             fullmessage: '',
             messageprioridade: ''
@@ -35,7 +33,7 @@ onSubmit = (e) => {
 }
 
 // Metodo para ser atualizado o estado objeto fullmessage (PUT)
-onChangeFullmessage(e) {
+onChangeFullmessage = (e) => {
     this.setState({
         fullmessage: e.target.value
     })

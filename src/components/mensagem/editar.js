@@ -3,13 +3,8 @@ import axios from 'axios';
 
 
 export default class Editar extends Component {
-    constructor(){
-        super();
-        this.state = {
-            fullmessage: '',
-            messageprioridade: ''
-        }
-    }
+
+    state = {fullmessage: '', messageprioridade: ''}
 
 componentDidMount() {
     console.log('pegando parametro da url: teste?',this.props.match.params.id );
@@ -47,7 +42,7 @@ onSubmit = (e) => {
     axios.put('http://localhost:3001/message/'+this.props.match.params.id, msgObj)
         .then(resp => console.log('okTrue', resp.data));
     // if oktrue : Ser redirecionado usando props.hitory
-        this.props.history.push('/');
+        this.props.history.push('/list');
 }
 
     render() {
